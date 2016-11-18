@@ -4,8 +4,6 @@
 
 using namespace std;
 
-SDL_Window* window;
-
 bool init();
 void kill();
 
@@ -47,17 +45,9 @@ bool init() {
 		cout << "Error initializing SDL: " << SDL_GetError() << endl;
 		return false;
 	}
-
-	window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
-	if (!window) {
-		cout << "Error creating window: " << SDL_GetError() << endl;
-		return false;
-	}
-
 	return true;
 }
 
 void kill() {
-	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
