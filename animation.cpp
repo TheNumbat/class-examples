@@ -1,6 +1,4 @@
 
-#if 0
-
 #include <iostream>
 #include <vector>
 
@@ -131,5 +129,3 @@ void kill() {
 	IMG_Quit();
 	SDL_Quit();
 }
-
-#endif
