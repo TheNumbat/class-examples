@@ -57,6 +57,7 @@ struct camera {
 unordered_map<chunkpos, chunk> chunks;
 SDL_Window* window;
 SDL_Renderer* renderer;
+SDL_Texture* e_texture;
 camera cam;
 
 int w = 1280, h = 720;
@@ -181,11 +182,11 @@ bool init() {
 	window = SDL_CreateWindow("chunk stuff", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
 	SDL_Surface* load = IMG_Load("dankdude.png");
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, load);
+	e_texture = SDL_CreateTextureFromSurface(renderer, load);
 	
 	{
 		entity e;
-		e.texture = tex;
+		e.texture = e_texture;
 		e.x = 50;
 		e.y = 50;
 		e.w = load->w;
@@ -195,7 +196,7 @@ bool init() {
 
 	{
 		entity e;
-		e.texture = tex;
+		e.texture = e_texture;
 		e.x = 150;
 		e.y = 150;
 		e.w = load->w;
@@ -205,7 +206,7 @@ bool init() {
 
 	{
 		entity e;
-		e.texture = tex;
+		e.texture = e_texture;
 		e.x = 100;
 		e.y = 100;
 		e.w = load->w;
@@ -215,7 +216,7 @@ bool init() {
 
 	{
 		entity e;
-		e.texture = tex;
+		e.texture = e_texture;
 		e.x = 50;
 		e.y = 50;
 		e.w = load->w;
@@ -229,5 +230,8 @@ bool init() {
 }
 
 void kill() {
+	SDL_DestroyTexture(e_texture);
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
