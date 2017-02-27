@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <vector>
-#include <wector>
 #include <SDL.h>
 #include <SDL_image.h>
 
